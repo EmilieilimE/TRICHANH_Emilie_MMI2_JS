@@ -1,5 +1,5 @@
 ﻿<html>
-<body>
+<body onresize="taille()">
 
 <!-- Exercice 1.1 -->
 
@@ -288,19 +288,75 @@ trois (15,5,2);
 
 Montant : <input type="number" id="montant">
 Côte : <span id="cote"></span></br>
+Bénéfices : <span id="benef"></span>
 <button onclick ="calcul()">Calculer les bénéfices</button>
 <button onclick ="gcote()">Générer une côte</button>
 
 <script type="text/javascript">
+	var cote = 0;
 function gcote () {
-	var cote = Math.floor(Math.random() * (2 - 0) + 0);
+	cote = Math.random().toFixed(2)* (2 - 0) + 0;
 	document.getElementById('cote').innerHTML = cote;
 }
 
 function calcul () {
 	var montant = document.getElementById("montant").value;
 	var benef = montant*cote;
+	document.getElementById('benef').innerHTML = benef;
 }
+</script>
+</br></br>
+
+<!-- Exercice 12 -->
+
+<input type="number" id="km">
+<button onclick ="kmhmin()">Km en h et min</button>
+<span id="convheure"></span>h
+<span id="conversion3"></span>min
+<script type="text/javascript">
+	function kmhmin () {
+		var km = document.getElementById("km").value;
+		var conv3 = (km / 1000);
+		var conv3bis = Math.floor(km / 1000);
+		var conv3bisbis = (conv3*30)/0.5 % 60;
+		document.getElementById('convheure').innerHTML = conv3bis;
+		document.getElementById('conversion3').innerHTML = conv3bisbis;
+	}
+</script>
+</br>
+
+<input type="number" id="temps"> en minutes
+<button onclick ="hminkm()">Minutes en km</button>
+<span id="conversion4"></span>km
+
+<script type="text/javascript">
+	function hminkm () {
+		var hmin = document.getElementById("temps").value;
+		var conv4 = (hmin*1000)/60;
+		document.getElementById('conversion4').innerHTML = conv4;
+	}
+</script>
+</br></br>
+
+<!-- Exercice 13 -->
+
+Dimensions écran : <span id="width"></span>x<span id="height"></span>
+Dimensions page : <span id="width2"></span>x<span id="height2"></span>
+<button onclick ="taille()"></button>
+
+<script type="text/javascript">
+		var x = screen.width;
+		var y = screen.height;
+		document.getElementById('width').innerHTML = x;
+		document.getElementById('height').innerHTML = y;
+
+		function taille() {
+		var m = window.innerWidth;
+		var n = window.innerHeight;
+		document.getElementById('width2').innerHTML = m;
+		document.getElementById('height2').innerHTML = n;
+	}	
+
 </script>
 
 
